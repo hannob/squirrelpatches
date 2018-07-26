@@ -17,3 +17,8 @@ All these patches have been sent to the squirrelmail developer as well, so I hop
 patch collection can be obsolete soon.
 
 Each patch contains a brief explanation what it does.
+
+Please apply these patches on top of a recent "Stable version snapshot (1.4.23-svn)" from
+http://squirrelmail.org/download.php
+
+Don't use squirrelmail 1.4.22. It contains several severe security vulnerabilities.
