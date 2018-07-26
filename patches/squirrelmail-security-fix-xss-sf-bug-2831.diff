@@ -1,0 +1,38 @@
+Fixes multiple cross site scripting (XSS) vulnerabilities, as described in this bug report:
+https://sourceforge.net/p/squirrelmail/bugs/2831/
+
+--- squirrelmail/functions/mime.php	2018-01-17 00:36:07.000000000 +0100
++++ htdocs/functions/mime.php	2018-07-17 21:06:46.982992523 +0200
+@@ -1676,7 +1676,8 @@
+         /**
+          * Use white list based filtering on attributes which can contain url's
+          */
+-        else if ($attname == 'href' || $attname == 'src' || $attname == 'background') {
++        else if ($attname == 'href' || $attname == 'src' || $attname == 'background' || $attname == 'xlink:href' ||
++                $attname == 'action' || $attname == 'formaction' || $attname == 'to') {
+             sq_fix_url($attname, $attvalue, $message, $id, $mailbox);
+             $attary{$attname} = $attvalue;
+         }
+@@ -2324,7 +2325,11 @@
+             "frame",
+             "iframe",
+             "plaintext",
+-            "marquee"
++            "marquee",
++            "animate",
++            "form",
++            "math",
++            "param"
+             );
+ 
+     $rm_tags_with_content = Array(
+@@ -2334,7 +2339,8 @@
+             "title",
+             "frameset",
+             "xmp",
+-            "xml"
++            "xml",
++            "svg"
+             );
+ 
+     $self_closing_tags =  Array(

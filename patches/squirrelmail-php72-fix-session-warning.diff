@@ -1,0 +1,18 @@
+Make sure we don't try to start a session that's already started.
+
+Avoids warnings like this in PHP 7.2:
+
+PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in [...]/functions/global.php on line 476
+
+--- squirrelmail/functions/global.php	2018-01-17 00:36:07.000000000 +0100
++++ htdocs/functions/global.php	2018-07-16 09:08:54.727368140 +0200
+@@ -454,7 +454,8 @@
+  */
+ 
+ function sqsession_is_active() {
+-    sqsession_start();
++    if (session_status() === PHP_SESSION_NONE)
++        sqsession_start();
+ }
+ 
+ /**

@@ -1,0 +1,16 @@
+sizeof() shouldn't be called on strings, this likely was intended to be a call
+to strlen().
+
+Avoids warning in PHP 7.2.
+
+--- squirrelmail/functions/mime.php	2018-01-17 00:36:07.000000000 +0100
++++ htdocs/functions/mime.php	2018-07-17 17:57:12.118324247 +0200
+@@ -1202,7 +1202,7 @@
+ function sq_skipspace($body, $offset){
+     $me = 'sq_skipspace';
+     preg_match('/^(\s*)/s', substr($body, $offset), $matches);
+-    if (sizeof($matches{1})){
++    if (strlen($matches{1}) > 0){
+         $count = strlen($matches{1});
+         $offset += $count;
+     }
