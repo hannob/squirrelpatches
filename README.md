@@ -1,0 +1,2 @@
+# squirrelpatches
+Patches for Squirrelmail
