@@ -1,0 +1,15 @@
+We need to check the 'username' index exists in the array before trying
+to access it.
+
+--- a/src/compose.php	2018-04-04 05:00:42.000000000 +0200
++++ b/src/compose.php	2018-07-29 09:11:24.704107369 +0200
+@@ -299,7 +299,8 @@ if (sqsession_is_registered('session_exp
+      * extra check for username so we don't display previous post data from
+      * another user during this session.
+      */
+-    if ($session_expired_post['username'] != $username) {
++    if (array_key_exists('username', $session_expired_post)
++       && ($session_expired_post['username'] != $username)) {
+         unset($session_expired_post);
+         sqsession_unregister('session_expired_post');
+         session_write_close();
