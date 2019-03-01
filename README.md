@@ -9,9 +9,9 @@ though some development still happens in the subversion repository.
 
 I'm sharing a few patches here with the goal to:
 
-* Fix known security issues.
+* ~~Fix known security issues.~~ Hopefully known security issues are fixed upstream now.
 * Avoid PHP warnings.
-* Fix compatibility issues with the current PHP 7.2.
+* Fix compatibility issues with the current PHP 7.2/7.3.
 
 All these patches have been sent to the squirrelmail developer as well, so I hope this
 patch collection can be obsolete soon.
