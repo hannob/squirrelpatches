@@ -19,7 +19,8 @@ patch collection can be obsolete soon.
 Each patch contains a brief explanation what it does.
 
 Please apply these patches on top of a recent "Stable version snapshot (1.4.23-svn)" from
-http://squirrelmail.org/download.php
+
+ https://squirrelmail.org/download.php
 
 Don't use squirrelmail 1.4.22. It contains several severe security vulnerabilities.
 Use a version after 2019-07-25 for the latest security fix (CVE-2019-12970).
