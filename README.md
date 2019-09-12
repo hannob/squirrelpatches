@@ -11,7 +11,7 @@ I'm sharing a few patches here with the goal to:
 
 * ~~Fix known security issues.~~ Hopefully known security issues are fixed upstream now.
 * Avoid PHP warnings.
-* Fix compatibility issues with the current PHP 7.2/7.3.
+* Fix compatibility issues with the current PHP 7.3/7.4.
 
 All these patches have been sent to the squirrelmail developer as well, so I hope this
 patch collection can be obsolete soon.
@@ -22,3 +22,4 @@ Please apply these patches on top of a recent "Stable version snapshot (1.4.23-s
 http://squirrelmail.org/download.php
 
 Don't use squirrelmail 1.4.22. It contains several severe security vulnerabilities.
+Use a version after 2019-07-25 for the latest security fix (CVE-2019-12970).
