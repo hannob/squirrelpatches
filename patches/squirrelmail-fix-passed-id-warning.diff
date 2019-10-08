@@ -1,0 +1,14 @@
+The variable $passed_id is accessed later on, so we make sure it is
+set in every case. Otherwise we'll have "Undefined variable" warnings.
+
+--- squirrelmail/src/download.php	2019-01-08 05:27:15.000000000 +0100
++++ htdocs/src/download.php	2019-10-08 09:35:27.001134744 +0200
+@@ -39,6 +39,8 @@
+ sqgetGlobalVar('absolute_dl',$absolute_dl,  SQ_GET);
+ if ( sqgetGlobalVar('passed_id', $temp, SQ_GET) ) {
+     $passed_id = (int) $temp;
++} else {
++    $passed_id = 0;
+ }
+ 
+ global $default_charset;
