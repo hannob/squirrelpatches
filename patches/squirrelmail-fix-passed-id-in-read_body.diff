@@ -1,0 +1,15 @@
+The variable is later accessed and will cause an undefined variable
+warning if it's not set. Setting it to 0 will just cause a followup error, but
+it avoids cluttering the log with PHP warnings.
+
+--- squirrelmail/src/read_body.php	2019-01-08 05:27:15.000000000 +0100
++++ htdocs/src/read_body.php	2019-10-22 09:54:34.148260588 +0200
+@@ -763,6 +763,8 @@ sqgetGlobalVar('mailbox',       $mailbox
+ 
+ if ( sqgetGlobalVar('passed_id', $temp) ) {
+     $passed_id = (int) $temp;
++} else {
++    $passed_id = 0;
+ }
+ if ( sqgetGlobalVar('sort', $temp) ) {
+     $sort = (int) $temp;
