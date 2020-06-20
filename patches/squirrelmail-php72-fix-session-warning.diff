@@ -4,9 +4,10 @@ Avoids warnings like this in PHP 7.2:
 
 PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in [...]/functions/global.php on line 476
 
---- squirrelmail/functions/global.php	2018-01-17 00:36:07.000000000 +0100
-+++ htdocs/functions/global.php	2018-07-16 09:08:54.727368140 +0200
-@@ -454,7 +454,8 @@
+diff -Naurp a/functions/global.php b/functions/global.php
+--- a/functions/global.php	2020-03-24 19:08:40.000000000 +0100
++++ b/functions/global.php	2020-06-20 10:34:06.928896213 +0200
+@@ -455,7 +455,8 @@ function sqsession_destroy() {
   */
  
  function sqsession_is_active() {
