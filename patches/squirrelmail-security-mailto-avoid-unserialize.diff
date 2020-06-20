@@ -1,0 +1,35 @@
+PHP's unserialize() should not be used with untrusted data, therefore
+replace usage of serialize/unserialize for mailtodata with
+JSON functions.
+
+diff -Naurp squirrelmail/src/compose.php htdocs/src/compose.php
+--- squirrelmail/src/compose.php	2019-02-23 08:09:00.000000000 +0100
++++ htdocs/src/compose.php	2020-06-20 10:24:44.531930554 +0200
+@@ -132,7 +132,7 @@ if ( sqgetGlobalVar('mailtodata', $mailt
+                  'bcc'          => 'send_to_bcc',
+                  'body'         => 'body',
+                  'subject'      => 'subject');
+-    $mtdata = unserialize($mailtodata);
++    $mtdata = json_decode($mailtodata, TRUE);
+ 
+     foreach ($trtable as $f => $t) {
+         if ( !empty($mtdata[$f]) ) {
+diff -Naurp squirrelmail/src/mailto.php htdocs/src/mailto.php
+--- squirrelmail/src/mailto.php	2019-01-08 05:27:15.000000000 +0100
++++ htdocs/src/mailto.php	2020-06-20 10:24:29.712232742 +0200
+@@ -109,12 +109,12 @@ sqsession_is_active();
+ 
+ if (!$force_login && sqsession_is_registered('user_is_logged_in')) {
+     if ($compose_only) {
+-        $redirect = 'compose.php?mailtodata=' . urlencode(serialize($data));
++        $redirect = 'compose.php?mailtodata=' . urlencode(json_encode($data));
+     } else {
+-        $redirect = 'webmail.php?right_frame=compose.php&mailtodata=' . urlencode(serialize($data));
++        $redirect = 'webmail.php?right_frame=compose.php&mailtodata=' . urlencode(json_encode($data));
+     }
+ } else {
+-    $redirect = 'login.php?mailtodata=' . urlencode(serialize($data));
++    $redirect = 'login.php?mailtodata=' . urlencode(json_encode($data));
+ }
+ 
+ session_write_close();
