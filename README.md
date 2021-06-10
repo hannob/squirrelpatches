@@ -1,3 +1,10 @@
+# WARNING: unmaintained
+
+I am no longer using Squirrelmail so this repo is unmaintained.
+Squirrelmail has a known security flaw (CVE-2020-14933) for which
+my patchset only contains an incomplete fix.
+There's an open, unreviewed pull request that may help.
+
 # squirrelpatches
 Patches for Squirrelmail
 
